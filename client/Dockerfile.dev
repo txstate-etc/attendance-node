@@ -1,0 +1,5 @@
+FROM nginx:mainline-alpine
+WORKDIR /usr/share/nginx/html
+COPY static static
+COPY index.html ./
+RUN ln -s static/favicon.png favicon.ico

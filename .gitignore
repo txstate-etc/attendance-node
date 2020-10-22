@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+.DS_Store
+docker-compose*override.yml
+package-lock.json

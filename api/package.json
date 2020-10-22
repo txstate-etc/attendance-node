@@ -1,0 +1,63 @@
+{
+  "name": "attendance-node",
+  "version": "1.0.0",
+  "description": "An LTI tool for taking attendance.",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "@nestjs/common": "^7.4.4",
+    "@nestjs/core": "^7.4.4",
+    "@nestjs/graphql": "^7.7.0",
+    "@nestjs/platform-express": "^7.4.4",
+    "apollo-server": "^2.18.2",
+    "apollo-server-express": "^2.18.2",
+    "dataloader-factory": "^3.2.0",
+    "graphql": "^15.3.0",
+    "graphql-tools": "^6.2.4",
+    "jsonwebtoken": "^8.5.1",
+    "ltijs": "^5.3.9",
+    "mysql2-async": "^1.0.10",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.6.3",
+    "txstate-utils": "^1.2.18"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^7.5.1",
+    "@types/jsonwebtoken": "7.2.7",
+    "@types/node": "^14.14.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "eslint": "^7.8.1",
+    "eslint-config-standard-with-typescript": "^18.0.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/txstate-etc/attendance-node.git"
+  },
+  "keywords": [
+    "ims",
+    "lti",
+    "attendance",
+    "canvas"
+  ],
+  "author": "Nick Wing",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/txstate-etc/attendance-node/issues"
+  },
+  "homepage": "https://github.com/txstate-etc/attendance-node#readme"
+}

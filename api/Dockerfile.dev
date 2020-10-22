@@ -1,0 +1,13 @@
+FROM node:14-alpine
+WORKDIR /usr/app
+
+COPY package.json ./
+RUN npm install
+
+COPY src src
+COPY @types @types
+COPY tsconfig.json ./
+COPY tsconfig.build.json ./
+
+ENTRYPOINT [ "npm" ]
+CMD [ "run", "start:dev" ]
