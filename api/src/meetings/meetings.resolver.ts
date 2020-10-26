@@ -6,7 +6,10 @@ import { MeetingsService } from './meetings.service'
 
 @Resolver(of => Meeting)
 export class MeetingsResolver {
-  constructor (private readonly meetingsService: MeetingsService, private readonly userAttendancesService: UserAttendancesService) {}
+  constructor (
+    private readonly meetingsService: MeetingsService,
+    private readonly userAttendancesService: UserAttendancesService
+  ) {}
 
   @Query(returns => [Meeting])
   async meetings (@Args('filter') filter: MeetingFilters) {

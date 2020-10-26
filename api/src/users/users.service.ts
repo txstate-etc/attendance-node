@@ -5,8 +5,8 @@ import { User, UserFilters } from './users.models'
 import { getUsers } from './users.database'
 
 DataLoaderFactory.register<string, User>('users', {
-  fetch: async (ids, ctx) => {
-    return await getUsers({ ids }, ctx)
+  fetch: async (ids) => {
+    return await getUsers({ ids })
   }
 })
 
@@ -17,6 +17,6 @@ export class UsersService extends DataLoadedService {
   }
 
   async find (filters: UserFilters) {
-    return await getUsers(filters, this.ctx)
+    return await getUsers(filters)
   }
 }

@@ -1,6 +1,4 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql'
-import { DataLoaderFactoryContext } from 'src/dataloaderfactory/dataloadedservice'
-import { MeetingsService } from 'src/meetings/meetings.service'
 
 @ObjectType()
 export class UserAttendance {

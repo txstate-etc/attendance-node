@@ -1,8 +1,6 @@
-import { Inject } from '@nestjs/common'
-import { ContextId, ModuleRef } from '@nestjs/core'
+import { Inject, Type } from '@nestjs/common'
 import { DataLoaderFactory } from 'dataloader-factory'
-import { User } from 'src/users/users.models'
-import { DataLoaderFactoryService } from './dataloaderfactory.service'
+import { DataLoaderFactoryContext, DataLoaderFactoryService } from './dataloaderfactory.service'
 
 export class DataLoadedService {
   ctx: DataLoaderFactoryContext
@@ -11,10 +9,8 @@ export class DataLoadedService {
     this.ctx = this.dlfservice.ctx
     this.factory = this.dlfservice.factory
   }
-}
 
-export interface DataLoaderFactoryContext {
-  user: User
-  moduleRef: ModuleRef
-  contextId: ContextId
+  async getService<TInput> (type: Type<TInput>) {
+    return await this.ctx.getService(type)
+  }
 }

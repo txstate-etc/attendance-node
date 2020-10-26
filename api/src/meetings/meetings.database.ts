@@ -1,8 +1,7 @@
 import db from 'mysql2-async/db'
-import { DataLoaderFactoryContext } from 'src/dataloaderfactory/dataloadedservice'
 import { MeetingFilters, Meeting } from './meetings.models'
 
-export async function getMeetings (filters: MeetingFilters, ctx: DataLoaderFactoryContext) {
+export async function getMeetings (filters: MeetingFilters) {
   const binds = []
   const where = []
   if (filters.ids?.length) {

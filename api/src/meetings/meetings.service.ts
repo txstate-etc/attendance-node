@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common'
 import { DataLoaderFactory } from 'dataloader-factory'
-import { DataLoadedService, DataLoaderFactoryContext } from '../dataloaderfactory/dataloadedservice'
+import { DataLoadedService } from '../dataloaderfactory/dataloadedservice'
 import { getMeetings } from './meetings.database'
 import { Meeting, MeetingFilters } from './meetings.models'
 
-DataLoaderFactory.register<string, Meeting, DataLoaderFactoryContext>('meetings', {
-  fetch: async (ids, ctx) => {
-    return await getMeetings({ ids }, ctx)
+DataLoaderFactory.register<string, Meeting>('meetings', {
+  fetch: async (ids) => {
+    return await getMeetings({ ids })
   }
 })
 
@@ -17,6 +17,6 @@ export class MeetingsService extends DataLoadedService {
   }
 
   async find (filters: MeetingFilters) {
-    return await getMeetings(filters, this.ctx)
+    return await getMeetings(filters)
   }
 }
