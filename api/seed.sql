@@ -1,6 +1,6 @@
 INSERT INTO `roles` (`id`,`roletype`,`subroletype`,`roleurn`,`displayname`,`displayorder`,`sets_permissions`,`take_attendance`,`record_attendance`,`edit_gradesettings`)
 VALUES
-  (1,'Instructor','','urn:lti:role:ims/lis/Instructor','Instructor',0,1,1,0,1);
+  (1,'Instructor','','urn:lti:role:ims/lis/Instructor','Instructor',0,1,1,0,1),
   (2,'Learner/Instructor','','urn:lti:role:ims/lis/Learner/Instructor','Project Maintainer',1,1,1,1,1),
   (3,'TeachingAssistant','','urn:lti:role:ims/lis/TeachingAssistant','Teaching Assistant',2,0,1,0,1),
   (4,'TeachingAssistant/Grader','','urn:lti:role:ims/lis/TeachingAssistant/Grader','Grader',3,0,0,0,0),
