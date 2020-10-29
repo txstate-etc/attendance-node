@@ -18,11 +18,11 @@ Navigate your browser to [http://localhost/graphql] to use the GraphQL Playgroun
     * Resolvers do NOT concern themselves with authorization, as that should be shared with other protocols such as REST.
   * A `.models.ts` file that defines the types being accepted and returned by the resolvers.
     * The model should not have any business logic except for the primary model's constructor which translates from a passed-in database row.
-  * A `.service.ts` file that uses the database.ts functions to retrieving data, while also applying:
+  * A `.database.ts` file that exports functions strictly to translate `filter` objects into SQL and retrieve the corresponding items from the database.
+  * A `.service.ts` file that uses the database.ts functions to retrieve data, while also applying:
     * Dataloading
     * Caching (if desired)
     * Authorization
-  * A `.database.ts` file that exports functions strictly to translate `filter` objects into SQL and retrieve the corresponding items from the database.
 
 ### DataloaderFactory Module
 The `DataLoaderFactory` module provides code shared by all data type modules. Its service is request-scoped, which will cascade up and make all data type services and resolvers request-scoped as well. This means that each request has its own instance of DataLoaderFactory, and all the caching that goes along with that.
