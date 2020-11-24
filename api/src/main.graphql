@@ -1,0 +1,3 @@
+# Global object types (not application-specific)
+# note, this is just something i made up on the fly because i needed a spot to put generic stuff like this. --tony
+scalar Date

@@ -1,0 +1,8 @@
+type User {
+  admin: Boolean!
+  id: ID!
+}
+
+input UserFilters {
+  ids: [String!]!
+}

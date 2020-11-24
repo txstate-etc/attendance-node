@@ -1,0 +1,9 @@
+type Meeting {
+  id: ID!
+  userattendances: [UserAttendance!]!
+}
+
+input MeetingFilters {
+  ids: [String!]
+  siteIds: [String!]
+}
