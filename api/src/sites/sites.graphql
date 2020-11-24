@@ -1,0 +1,17 @@
+type Site {
+  id: ID!
+  context_id: Int!
+  context_label: String
+  context_name: String
+  roster_fetched_at: Date
+  update_in_progress: Date
+  outcomes_url: String
+  points_url: String
+  lms_id: Int
+  is_canvas: Boolean!
+  assignment_id: Int
+}
+
+input SiteFilters {
+  ids: [ID!]!
+}
