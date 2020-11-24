@@ -1,3 +1,4 @@
+import { join } from 'path'
 import { Module } from '@nestjs/common'
 import { GraphQLModule } from '@nestjs/graphql'
 import { LtiModule } from './lti/lti.module'
@@ -12,7 +13,9 @@ import { UserAttendancesModule } from './userattendances/userattendances.module'
     UsersModule,
     UserAttendancesModule,
     GraphQLModule.forRoot({
-      autoSchemaFile: true,
+      typePaths: ['./**/*.graphql'],
+      definitions: { path: join(process.cwd(), 'src/graphql.ts') },
+      autoSchemaFile: false,
       sortSchema: true,
       context: ({ req }) => {
         req.user = { netid: 'nw13' }
