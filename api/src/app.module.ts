@@ -4,6 +4,7 @@ import { LtiModule } from './lti/lti.module'
 import { MeetingsModule } from './meetings/meetings.module'
 import { UsersModule } from './users/users.module'
 import { UserAttendancesModule } from './userattendances/userattendances.module'
+import { join } from 'path'
 
 @Module({
   imports: [
@@ -12,8 +13,8 @@ import { UserAttendancesModule } from './userattendances/userattendances.module'
     UsersModule,
     UserAttendancesModule,
     GraphQLModule.forRoot({
-      autoSchemaFile: true,
-      sortSchema: true,
+      typeDefs: ['./**/*.graphql'],
+      definitions: { path: join(process.cwd(), 'src/graphql.ts') },
       context: ({ req }) => {
         req.user = { netid: 'nw13' }
         return { user: req.user }
