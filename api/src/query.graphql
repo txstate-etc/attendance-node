@@ -1,0 +1,7 @@
+# ideally, this would not need to be defined here, but i think it's necessary when autoSchemaFile=false
+type Query {
+  meetings(filter: MeetingFilters!): [Meeting!]!
+  userattendances(filter: UserAttendanceFilters!): [UserAttendance!]!
+  users(filter: UserFilters!): [User!]!
+  sites(filter:SiteFilters!): [Site!]!
+}

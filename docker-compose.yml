@@ -1,0 +1,55 @@
+version: '3.5'
+services:
+  attendance-api:
+    build:
+      context: api
+      dockerfile: Dockerfile.dev
+    environment:
+      NODE_ENV: development
+      LTI_SECRET: supersecret
+      CANVAS_CLIENT_ID: '30000000000776'
+      DB_HOST: mysql
+      DB_DATABASE: attendance
+      DB_PASS: secret
+      MONGO_HOST: mongo
+    volumes:
+      - ./api/src:/usr/app/src
+      - ./api/@types:/usr/app/@types
+    depends_on:
+      - mysql
+  attendance-client:
+    build:
+      context: client
+      dockerfile: Dockerfile.dev
+  proxy:
+    image: registry.its.txstate.edu/apitransform:qual
+    ports:
+      - 80:80
+      - 10000:10000
+    depends_on:
+      - attendance-api
+      - attendance-client
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf
+      - ./locations.conf:/etc/nginx/locations.conf
+  mysql:
+    image: percona:5
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: attendance
+    ports:
+      - 3306:3306
+    volumes:
+      - attendancenodedata:/var/lib/mysql
+      - ./api/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./api/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+  mongo:
+    image: mongo:latest
+    command: --logpath /dev/null
+    ports:
+      - 27017:27017
+    volumes:
+      - attendanceltidata:/data/db
+volumes:
+  attendancenodedata: {}
+  attendanceltidata: {}

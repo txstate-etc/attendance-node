@@ -1,0 +1,8 @@
+type Site {
+  id: ID!
+  name: String!
+}
+
+input SiteFilters {
+  ids: [ID!]!
+}

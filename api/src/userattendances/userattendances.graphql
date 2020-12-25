@@ -1,0 +1,8 @@
+type UserAttendance {
+  id: ID!
+}
+
+input UserAttendanceFilters {
+  ids: [String!]
+  meetingIds: [String!]
+}
